@@ -1,0 +1,23 @@
+
+<ng-container *ngIf="weatherData() as data"> <!-- ng-container is not returned to the DOM-->
+  <h2 class="font-bold text-2xl mt-4 mb-2 text-center">Weather in: {{city()}}</h2>
+  <div class="flex flex-col rounded-2xl border border-solid mt-4  px-4   items-center" [class]="data.main.temp>30 ? 'bg-red-800' : data.main.temp>20 ? 'bg-blue-500' : 'bg-gray-500'"  >
+    <img class="w-[200px] h-[160px] "[src]="'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png'" />
+    <div class="flex flex-row gap-4">
+        <p class="text-xl">🌡️ {{ data.main.temp }} °C</p>
+         <p class="capitalize text-xl">{{ data.weather[0].description }}</p>
+    </div>
+    <div class="flex flex-row gap-4 mt-2">
+        <p>💧 Humidity: {{ data.main.humidity }}%</p>
+        <p>💨 Wind: {{ data.wind.speed }} m/s</p>
+    </div>
+    <div class="flex flex-row gap-4 mt-2 mb-3">
+       <p>🌅 Sunrise: {{ data.sys.sunrise * 1000 | date: 'shortTime' }}</p>
+        <p>🌇 Sunset: {{ data.sys.sunset * 1000 | date: 'shortTime' }}</p>
+    </div>
+    </div>
+  
+</ng-container>
+
+
+

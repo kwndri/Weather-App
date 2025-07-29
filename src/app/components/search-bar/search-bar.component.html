@@ -1,0 +1,12 @@
+<form #form="ngForm" class="flex gap-2" (ngSubmit)="onSubmit(form)">
+    <div>
+        <input id="city" type="text" name="city" ngModel required placeholder="Enter city" #city="ngModel" class="border rounded px-3 py-2 flex-grow ">
+    </div>
+    <button 
+        type="submit" 
+        [disabled]="city.invalid"
+        class="bg-blue-500 text-white px-4 rounded disabled:opacity-50"
+      >
+        Search
+      </button>
+</form>

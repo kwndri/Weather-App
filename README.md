@@ -2,6 +2,24 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
 
+## 🔧 Features
+
+- Search weather by city name
+- Displays temperature, weather conditions, humidity, etc.
+- Responsive and modern UI using Angular and Taiwlind
+
+## Technologies Used
+
+- Angular
+
+- RxJS
+
+- TypeScript
+
+- Tailwind
+
+- OpenWeatherMap API
+
 ## Development server
 
 To start a local development server, run:
@@ -11,6 +29,8 @@ ng serve
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+A new API key for OpenWeatherMap API must be created and used in the weather.ts file inside services folder
 
 ## Code scaffolding
 
