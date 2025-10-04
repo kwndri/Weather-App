@@ -15,7 +15,6 @@ export class SearchBarComponent {
     const city = form.value.city.trim();
     if (form.valid) {
       console.log('City submitted:', form.value.city);
-      // you can clear the input if you want:
       if (city) {
         this.citySelected.emit(city);
       }

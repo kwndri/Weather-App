@@ -14,7 +14,7 @@ import { WeatherDataComponent } from './components/weather-data/weather-data.com
 export class AppComponent {
   protected title = 'weather-app';
   weatherService = inject(WeatherService);
-  private destroRef = inject(DestroyRef);
+  private destroyRef = inject(DestroyRef);
   error = signal('');
   weatherData = signal<WeatherData | null>(null);
   city = signal<string>('');
@@ -37,7 +37,7 @@ export class AppComponent {
         },
       });
 
-    this.destroRef.onDestroy(() => {
+    this.destroyRef.onDestroy(() => {
       subscription.unsubscribe();
     });
   }
