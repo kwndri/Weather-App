@@ -1,7 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
-import { WeatherData } from '../models/weather.model';
-import { catchError, tap, throwError } from 'rxjs';
+import {
+  WeatherDailyResponse,
+  WeatherData,
+  WeatherDataDaily,
+} from '../models/weather.model';
+import { catchError, map, tap, throwError } from 'rxjs';
 import { environment } from '../../enviroment';
 
 @Injectable({
@@ -10,14 +14,28 @@ import { environment } from '../../enviroment';
 export class WeatherService {
   private http = inject(HttpClient);
   private apikey = environment.weatherApiKey;
-  private baseUrl = 'https://api.openweathermap.org/data/2.5/weather';
+  private baseUrl = 'https://api.openweathermap.org/data/2.5/';
 
-  fetchWeatherData(city: string, errorMessage: string) {
-    const url = `${this.baseUrl}?q=${encodeURIComponent(city)}&appid=${
+  fetchCurrentWeatherData(city: string, errorMessage: string) {
+    const url = `${this.baseUrl}weather?q=${encodeURIComponent(city)}&appid=${
       this.apikey
     }&units=metric`;
 
     return this.http.get<WeatherData>(url).pipe(
+      catchError((error) => {
+        console.error(error);
+        return throwError(() => new Error(errorMessage));
+      })
+    );
+  }
+
+  fetchDailyWeatherData(city: string, errorMessage: string) {
+    const url = `${this.baseUrl}forecast?q=${encodeURIComponent(city)}&appid=${
+      this.apikey
+    }&units=metric`;
+
+    return this.http.get<WeatherDailyResponse>(url).pipe(
+      map((res) => res.list),
       catchError((error) => {
         console.error(error);
         return throwError(() => new Error(errorMessage));

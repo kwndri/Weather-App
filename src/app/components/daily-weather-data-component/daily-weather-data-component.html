@@ -1,0 +1,14 @@
+@if(dailyWeatherData()) {
+    <div class="flex flex-row px-2 mt-3 mb-3  gap-[15px] items-center">
+        <p class="text-gray-400 text-lg">{{weatherTime}}</p>
+        <p class="text-lg">🌡️ {{dailyWeatherData()?.main?.temp }} °C</p>
+        <p>💧 Humidity: {{ dailyWeatherData()?.main?.humidity }}%</p>
+        <p>💨 Wind: {{ dailyWeatherData()?.wind?.speed }} m/s</p>
+        <p class="capitalize text-xl">{{ dailyWeatherData()?.weather?.[0]?.description ?? '-' }}</p>
+        <img class="w-[60px] h-[60px] "[src]="'http://openweathermap.org/img/wn/' + dailyWeatherData()?.weather?.[0]?.icon + '@2x.png'" />
+        
+    </div>
+
+    <hr class=" w-[100%] border-black border">
+
+}

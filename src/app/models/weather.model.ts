@@ -16,3 +16,31 @@ export interface WeatherData {
     sunset: number; // unix timestamp
   };
 }
+
+interface WeatherDaily {
+  description: string;
+  icon: string;
+}
+
+interface Main {
+  temp: number;
+  humidity: number;
+}
+
+interface Wind {
+  speed: number;
+}
+
+export interface WeatherDailyResponse {
+  cod: string;
+  message: number;
+  cnt: number;
+  list: WeatherDataDaily[];
+}
+
+export interface WeatherDataDaily {
+  main: Main;
+  weather: WeatherDaily[];
+  wind: Wind;
+  dt_txt: string;
+}

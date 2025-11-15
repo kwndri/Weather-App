@@ -1,0 +1,12 @@
+@if(dailyWeatherData()) {
+    @for( entry of dailyWeatherData() | keyvalue; track entry.key) {
+        <div class="flex fex-row justify-between py-4 px-2 bg-gray-300 mt-[20px]">
+            <p class="text-blue-400 text-2xl">{{entry.key | date:'EEEE d MMMM':'':'en-US'}}</p>
+        </div>
+        <hr class=" w-[100%] border-black border">
+        @for(item of entry.value; track item.dt_txt) {
+            <app-daily-weather-data-component [dailyWeatherData]="item"></app-daily-weather-data-component>
+        }
+    }
+
+}

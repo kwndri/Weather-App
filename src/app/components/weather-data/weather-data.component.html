@@ -1,7 +1,7 @@
 
 <ng-container *ngIf="weatherData() as data"> <!-- ng-container is not returned to the DOM-->
-  <h2 class="font-bold text-2xl mt-4 mb-2 text-center">Weather in: {{city()}}</h2>
-  <div class="flex flex-col rounded-2xl border border-solid mt-4  px-4  " [class]="data.main.temp>30 ? 'bg-red-800' : data.main.temp>20 ? 'bg-blue-500' : 'bg-gray-500'"  >
+  <h2 class="font-bold text-2xl mt-4 mb-2 text-center">Current Weather Status in: {{displayCity()}}</h2>
+  <div class="flex flex-col rounded-2xl border border-solid mt-4  px-4 sm:min-w-[400px] min-w-[300px] mb-[20px]" [class]="data.main.temp>30 ? 'bg-red-800' : data.main.temp>20 ? 'bg-blue-500' : 'bg-gray-500'"  >
     <img class="w-[200px] h-[160px] self-center"[src]="'http://openweathermap.org/img/wn/' + data.weather[0].icon + '@2x.png'" />
     <div class="grid grid-cols-2 gap-4">
         <p class="text-xl">🌡️ {{ data.main.temp }} °C</p>
